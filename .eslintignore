@@ -1,0 +1,7 @@
+node_modules
+.serverless
+.vscode
+.cache
+.build
+dist/**/*
+*.config.js

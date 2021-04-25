@@ -1,0 +1,8 @@
+node_modules
+jspm_packages
+.serverless
+.vscode
+.cache
+.build
+config/*.local
+dist/

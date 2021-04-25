@@ -1,0 +1,44 @@
+service: qs-dataware
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-plugin-typescript
+  - serverless-plugin-include-dependencies
+  - serverless-plugin-common-excludes
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: 'eu-central-1'
+  apiName: 'qs-dataware'
+  stage: production
+  lambdaHashingVersion: 20201221
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  auth:
+    handler: ./src/functions/handler.auth
+  deviceEvent:
+    handler: ./src/functions/handler.deviceEvent
+    events:
+      - iot:
+          name: 'DeviceEvent'
+          sql: "SELECT topic(2) as eventId, topic(4) as deviceId, * FROM 'event/+/device/+'"
+          sqlVersion: '2016-03-23'
+  withings:
+    handler: ./src/functions/handler.withings
+    events:
+      - schedule: cron(15 * * * ? *)
+
+custom:
+  dotenv:
+    basePath: ./config/
+    required:
+      file: true
+  includeDependencies:
+    always:
+      - 'src/lib/**'
+  serverless-offline:
+    noPrependStageInUrl: true

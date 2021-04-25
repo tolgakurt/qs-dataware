@@ -1,0 +1,47 @@
+{
+  "name": "qs-dataware",
+  "version": "1.0.0",
+  "description": "QS Dataware Application",
+  "author": "Tolga Kurt <kurt.tolga@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "fresh": "yarn add --dev rimraf && rimraf .build && rimraf .cache && rimraf .serverless && rimraf dist && rimraf node_modules && yarn install",
+    "bundle": "rimraf dist && cross-env NODE_ENV=development ts-node bundle.ts",
+    "local": "cross-env NODE_ENV=development serverless offline start --stage development",
+    "deploy": "rimraf .build && rimraf .cache && rimraf .serverless && rimraf dist && cross-env NODE_ENV=production ts-node bundle.ts && serverless deploy --stage production"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.4",
+    "mongodb": "^3.6.4",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^2.28.7",
+    "@types/app-root-path": "^1.2.4",
+    "@types/aws-lambda": "^8.10.72",
+    "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/jwk-to-pem": "^2.0.0",
+    "@types/mongodb": "^3.6.9",
+    "@types/node": "^14.14.31",
+    "@types/node-fetch": "^2.5.9",
+    "@types/parcel-bundler": "^1.12.3",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "app-root-path": "^3.0.0",
+    "aws-lambda": "^1.0.6",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.21.0",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "serverless": "^2.28.7",
+    "serverless-dotenv-plugin": "^3.8.1",
+    "serverless-offline": "^6.8.0",
+    "serverless-plugin-common-excludes": "^3.0.1",
+    "serverless-plugin-include-dependencies": "^4.1.0",
+    "serverless-plugin-typescript": "^1.1.9",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}

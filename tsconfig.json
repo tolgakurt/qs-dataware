@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2020"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": { "~*": ["./*"] },
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2020",
+    "typeRoots" : ["node_modules/@types"]
+  },
+  "display": "Node 14",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": ["./src/**/*"],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*",
+    ".cache/**/*",
+    ".build/**/*"
+  ]
+}
